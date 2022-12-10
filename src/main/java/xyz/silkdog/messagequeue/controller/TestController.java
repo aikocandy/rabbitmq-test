@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import xyz.silkdog.messagequeue.service.send.Send;
 
@@ -17,8 +19,8 @@ public class TestController {
     private final static String SUCCESS = "success";
     private final Send send;
 
-    @GetMapping
-    public ResponseEntity<?> sendTest(String message){
+    @PostMapping
+    public ResponseEntity<?> sendTest(@RequestBody String message){
         if(StringUtils.isEmpty(message)){
             throw new RuntimeException("message not found");
         }

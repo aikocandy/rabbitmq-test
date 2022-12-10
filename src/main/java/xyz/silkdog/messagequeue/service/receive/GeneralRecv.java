@@ -7,6 +7,7 @@ import com.rabbitmq.client.DeliverCallback;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import xyz.silkdog.messagequeue.code.ServiceCode;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -15,8 +16,8 @@ import java.util.concurrent.TimeoutException;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class Recv {
-    private final static String QUEUE_NAME = "hello";
+public class GeneralRecv {
+    private final static String QUEUE_NAME = ServiceCode.General.name();
 
     public void receive(){
         ConnectionFactory factory = new ConnectionFactory();

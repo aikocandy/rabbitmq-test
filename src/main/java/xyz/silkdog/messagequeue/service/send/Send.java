@@ -6,6 +6,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import xyz.silkdog.messagequeue.code.ServiceCode;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -14,7 +15,8 @@ import java.util.concurrent.TimeoutException;
 @Slf4j
 @RequiredArgsConstructor
 public class Send {
-    private final static String QUEUE_NAME = "hello";
+    private final static String QUEUE_NAME = ServiceCode.Marketing.name();
+
 
     public void send(String message){
         ConnectionFactory factory = new ConnectionFactory();
@@ -23,7 +25,6 @@ public class Send {
         // Auto-closable
         try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-//            String message = "Hello World!";
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
             System.out.println(" [x] Sent '" + message + "'");
         } catch (IOException | TimeoutException e) {

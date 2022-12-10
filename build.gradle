@@ -27,6 +27,21 @@ dependencies {
     // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
     implementation 'com.rabbitmq:amqp-client'
 
+    // jackson
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.1'
+
+    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
+
+
+
 }
 
 tasks.named('test') {
