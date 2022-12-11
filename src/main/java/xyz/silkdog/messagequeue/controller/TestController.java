@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import xyz.silkdog.messagequeue.service.send.Send;
+import xyz.silkdog.messagequeue.service.task.NewTask;
 
 @Controller
 @Slf4j
@@ -18,6 +19,7 @@ import xyz.silkdog.messagequeue.service.send.Send;
 public class TestController {
     private final static String SUCCESS = "success";
     private final Send send;
+    private final NewTask newTask;
 
     @PostMapping
     public ResponseEntity<?> sendTest(@RequestBody String message){
@@ -26,6 +28,12 @@ public class TestController {
         }
         assert(message.length() > 0 && message.length() <= 1000);
         send.send(message);
+        return ResponseEntity.ok(SUCCESS);
+    }
+
+    @GetMapping("new-task")
+    public ResponseEntity<?> createNewTask(String message){
+        newTask.createNewTask(message);
         return ResponseEntity.ok(SUCCESS);
     }
 

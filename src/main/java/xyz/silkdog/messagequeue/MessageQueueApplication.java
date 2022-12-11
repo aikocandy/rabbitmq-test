@@ -6,12 +6,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import xyz.silkdog.messagequeue.service.receive.GeneralRecv;
 import xyz.silkdog.messagequeue.service.receive.MarketingRecv;
+import xyz.silkdog.messagequeue.service.receive.Worker;
 
 @SpringBootApplication
 @RequiredArgsConstructor
 public class MessageQueueApplication {
-    private final GeneralRecv generalRecv;
-    private final MarketingRecv marketingRecv;
+//    private final GeneralRecv generalRecv;
+//    private final MarketingRecv marketingRecv;
+    private final Worker worker;
 
     public static void main(String[] args) {
         SpringApplication.run(MessageQueueApplication.class, args);
@@ -19,8 +21,9 @@ public class MessageQueueApplication {
 
     @PostConstruct
     public void onstart(){
-        generalRecv.receive();
-        marketingRecv.marketingRecv();
+//        generalRecv.work();
+//        marketingRecv.marketingRecv();
+        worker.work();
     }
 
 }
